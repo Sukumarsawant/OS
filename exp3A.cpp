@@ -37,7 +37,7 @@ signed main(){
     cin.tie(NULL);
 
     int t=1; 
-    cin>>t;
+    // cin>>t;
     while(t--){
         solve();
     }
@@ -88,7 +88,7 @@ void solve(){
 
     cout<<"Enter arrival time of process"<<endl;
     rep(i,0,n){
-        
+        v[i].id = i + 1; 
         cin>>v[i].at;
     }    
     cout<<"Enter Burst time of process"<<endl;
@@ -123,12 +123,14 @@ void solve(){
         if(v[idx].rmt==0) {v[idx].ct = current_time;completed++;}
         else pq.push({v[idx].rmt,idx});
 
+    
+        
+    }
          for (int i = 0; i < n; i++) {
         v[i].tat = v[i].ct - v[i].at;
         v[i].wt  = v[i].tat - v[i].bt;
     }
-
-    
+    sort(all(v), [](const p &a, const p &b) { return a.id < b.id; });
     cout << "\nID AT BT CT TAT WT\n";
     for (auto &x : v) {
         cout << x.id << " "
@@ -138,11 +140,6 @@ void solve(){
              << x.tat << " "
              << x.wt << "\n";
     }
-
-
-        
-    }
-
     
 
     

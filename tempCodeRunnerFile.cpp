@@ -1,2 +1,3 @@
- thread t1(task1);
-    thread t2(task2);
+Sleep(1000);
+    m2.lock();
+    cout<<"producer locks m2"<<endl;
